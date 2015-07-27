@@ -1,0 +1,21 @@
+# Stuff that pops up locally for me - @jeremyfelt
+*.sublime*
+.DS_Store
+.idea
+
+# Because this really is a working directory, ignore vagrant's files
+/.vagrant
+
+# Log files should be ignored.
+/log/*.log
+
+# And no need to share individual SQL files with each other
+*.sql
+*.sql.gz
+
+
+# And a few of our web directories are important to share.
+/www/kca/
+/www/devstack/*
+!/www/devstack/info.php
+
