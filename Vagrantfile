@@ -1,5 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+vagrant_dir = File.expand_path(File.dirname(__FILE__))
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -124,6 +125,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # chef-validator, unless you changed the configuration.
   #
   #   chef.validation_client_name = "ORGNAME-validator"
-
+  
+  # provision.sh or provision-custom.sh
+  #
+  # By default, Vagrantfile is set to use the provision.sh bash script located in the
+  # provision directory. If it is detected that a provision-custom.sh script has been
+  # created, that is run as a replacement. This is an opportunity to replace the entirety
+  # of the provisioning provided by default.
+  config.vm.synced_folder "config/", "/srv/config"
+  
+  if File.exists?(File.join(vagrant_dir,'provision','provision-custom.sh')) then
+    config.vm.provision :shell, :path => File.join( "provision", "provision-custom.sh" )
+  else
+    config.vm.provision :shell, :path => File.join( "provision", "provision.sh" )
+  end
   config.vm.synced_folder "www/", "/var/www/", :owner => "www-data", :group => "www-data", :mount_options => [ "dmode=775", "fmode=666" ]
 end
