@@ -1,4 +1,3 @@
-# Stuff that pops up locally for me - @jeremyfelt
 *.sublime*
 .DS_Store
 .idea
@@ -15,7 +14,7 @@
 
 
 # And a few of our web directories are important to share.
-/www/kca/
+/www/*
 /www/devstack/*
 !/www/devstack/info.php
 
