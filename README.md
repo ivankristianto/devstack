@@ -47,7 +47,7 @@ Fancy, yeah?
 
 ### Upgrading the vagrant boxes
 Once a while I will upgrade the calibreworks/devstack with more latest version of Ubuntu LTS and packages.
-But when you do `vagrant box update` your database will gone. So I create a database backup script.
+Before you upgrade the vagrant box please backup all your databases. 
 
 1. Go to your vagrant ssh by using this command `vagrant ssh`
 1. Run the script `sh /srv/config/homebin/db_backup.sh`
