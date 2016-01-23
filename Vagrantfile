@@ -139,5 +139,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   else
     config.vm.provision :shell, :path => File.join( "provision", "provision.sh" )
   end
+
   config.vm.synced_folder "www/", "/var/www/", :owner => "www-data", :group => "www-data", :mount_options => [ "dmode=775", "fmode=666" ]
+  config.vm.synced_folder "data/", "/home/vagrant/data/", :owner => "vagrant", :group => "vagrant", :mount_options => [ "dmode=700", "fmode=700" ]
 end

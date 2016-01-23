@@ -45,6 +45,17 @@ These shared directories allow you to work, for example, in `www/devstack/yourwe
 
 Fancy, yeah?
 
+### Upgrading the vagrant boxes
+Once a while I will upgrade the calibreworks/devstack with more latest version of Ubuntu LTS and packages.
+But when you do `vagrant box update` your database will gone. So I create a database backup script.
+
+1. Go to your vagrant ssh by using this command `vagrant ssh`
+1. Run the script `sh /srv/config/homebin/db_backup.sh`
+1. Wait until all the databases backup
+1. Now go out from the vagrant ssh
+1. Stop your vagrant by this command `vagrant halt`
+1. Run `vagrant box update`
+
 ### What Did That Do?
 
 The first time you run `vagrant up`, a packaged box containing a basic virtual machine is downloaded to your local machine and cached for future use. The file used by Calibreworks Devstack contains an installation of Ubuntu 14.04 and is about 332MB.
